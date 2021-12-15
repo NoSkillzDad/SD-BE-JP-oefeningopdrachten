@@ -5,9 +5,29 @@ import java.util.Scanner;
 public class Korting {
     public static void main(String[] args) {
         Scanner userInputScanner = new Scanner(System.in);
+        String[] discountMsg = {
+                "De klant krijgt geen korting. Het aankoopbedrag blijft -HIER HET BEDRAG-",
+                "De klant krijgt 10% korting. Het aankoopbedrag is nu: -HIER HET BEDRAG MET KORTING-",
+                "De klant krijgt 16% korting. Het aankoopbedrag is nu: -HIER HET BEDRAG MET KORTING-"
+        };
+
+        int i = 0;
 
         System.out.println("Wat is het aankoopbedrag?");
         double aankoopBedrag = userInputScanner.nextDouble();
+        if (aankoopBedrag < 75.00) {
+            System.out.println(discountMsg[i]);
+        }
+        i++;
+        if ((aankoopBedrag >= 75) && (aankoopBedrag <= 300)) {
+            System.out.println(discountMsg[i]);
+        }
+        i++;
+        if (aankoopBedrag > 300.01) {
+            System.out.println(discountMsg[i]);
+        }
+
+
 
         /*
         Hierboven is het aankoopbedrag ingevoerd. Het is de bedoeling dat jij de korting bepaalt en het nieuwe bedrag

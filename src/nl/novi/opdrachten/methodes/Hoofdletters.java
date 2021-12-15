@@ -19,6 +19,7 @@ public class Hoofdletters {
 
     public static void main(String[] args) {
         List<String> curstomerNames = new ArrayList<>();
+        List<String> curstomerNamesUpdated = new ArrayList<>();
 
         curstomerNames.add("nick piraat");
         curstomerNames.add("michael jackson");
@@ -31,5 +32,53 @@ public class Hoofdletters {
         curstomerNames.add("henk den hartog");
         curstomerNames.add("mo el-mecky");
         curstomerNames.add("fredje kadetje");
+
+        curstomerNamesUpdated = processName(curstomerNames);
+
+        System.out.println(curstomerNames);
+
+        curstomerNames.clear();
+        curstomerNames = curstomerNamesUpdated;
+
+        System.out.println(curstomerNames);
+    }
+
+    public static String capitalize(String name) {
+
+        if (name.matches("\\w+\\.?")) {
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        } else {
+            System.out.println(name.indexOf("-"));
+            String[] splitted = name.split("-");
+            splitted[1] = splitted[1].substring(0, 1).toUpperCase() + splitted[1].substring(1);
+            name = splitted[0] + "-" + splitted[1];
+        }
+
+        return name;
+    }
+
+    public static List<String> processName(List<String> names2Fix) {
+
+        List<String> tempNames = new ArrayList<>();
+
+        for (String wholeName : names2Fix) {
+            String[] splitted = wholeName.split(" ");
+            String tempName = "";
+
+            splitted[0] = capitalize(splitted[0]);
+            splitted[splitted.length - 1] = capitalize(splitted[splitted.length - 1]);
+
+            for (int i = 0; i < splitted.length - 1; i++) {
+                tempName = tempName + splitted[i] + " ";
+            }
+            wholeName = tempName + splitted[splitted.length - 1];
+
+            tempNames.add(wholeName);
+        }
+        return(tempNames);
     }
 }
+
+//capitalizeStr = StringUtils.capitalize(str);
+//org.apache.commons.lang.StringUtils
+

@@ -8,8 +8,19 @@ package nl.novi.opdrachten.methodes;
  * 'ondeelbaar door vijf'
  */
 public class DeelbaarDoorVijf {
-
     public static void main(String[] sammieKijkOmhoog) {
-        int chosenNumber = 44;
+
+        int chosenNumber = 50;
+        if (divBy5(chosenNumber)) {
+            System.out.println(chosenNumber + " is a multiple of 5");
+        }
+    }
+
+    public static boolean divBy5(int number) {
+
+        switch (number % 5) {
+            case 0: return true;
+            default: return false;
+        }
     }
 }
